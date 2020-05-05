@@ -1,5 +1,5 @@
 # Vislice
 
-Janez Janša
+Borut Pahor
 Matija Pretnar
 Ivan Vidav
