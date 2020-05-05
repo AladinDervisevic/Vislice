@@ -1,16 +1,10 @@
-def is_prime(n):
-    if n <= 2:
-        return n == 2
-    elif n % 2 == 0:
-        return False
-    else:
+for i in range(2, 201):
+    if i == 2:
+        print(i)
+    elif i % 2 != 0:
         d = 3
-        while d ** 2 <= n:
-            if n % d == 0:
-                return False
+        while d ** 2 <= i:
+            if i % d == 0:
+                pass
             d += 2
-        return True
-
-for i in range(1, 201):
-    if is_prime(i):
         print(i)
