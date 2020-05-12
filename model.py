@@ -71,4 +71,5 @@ with open('besede.txt', encoding = 'utf-8') as datoteka:
 
 def nova_igra():
     beseda = random.choice(bazen_besed)
-    return Igra(beseda)
+    igra = Igra(beseda)
+    return igra
