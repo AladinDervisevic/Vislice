@@ -44,7 +44,7 @@ class Igra:
         return pravilni_del
 
     def nepravilni_del_gesla(self):
-        return ' '.join(self.napacne_crke)
+        return ' '.join(self.napacne_crke())
 
     def ugibaj(self, crka):
         crka = crka.lower()
