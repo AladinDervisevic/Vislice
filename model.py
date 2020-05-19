@@ -1,8 +1,8 @@
 import random
 
-ZACETEK = 'S'
+STEVILO_DOVOLJENIH_NAPAK = 9
 
-STEVILO_DOVOLJENIH_NAPAK = 10
+ZACETEK = 'S'
 
 PRAVILNA_CRKA = '+'
 PONOVLJENA_CRKA = 'o'
@@ -45,7 +45,7 @@ class Igra:
                 pravilni_del += '_'
         return pravilni_del
 
-    def nepravilni_del_gesla(self):
+    def nepravilni_ugibi(self):
         return ' '.join(self.napacne_crke())
 
     def ugibaj(self, crka):
@@ -87,13 +87,15 @@ class Vislice:
             return 0
 
     def nova_igra(self):
-        id_igre = self.prost_id_igre
+        id_igre = self.prost_id_igre()
         igra = nova_igra()
 
         self.igre[id_igre] = (igra, ZACETEK)
 
+        return id_igre
+
     def ugibaj(self, id_igre, crka):
         igra = self.igre[id_igre][0]
         novo_stanje = igra.ugibaj(crka)
-        
+
         self.igre[id_igre] = (igra, novo_stanje)
