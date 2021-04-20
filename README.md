@@ -1,1 +1,4 @@
 # Vislice
+
+**Avtorji**:
+- Aladin Dervišević
