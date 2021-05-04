@@ -1,9 +1,12 @@
+import random
+
 STEVILO_DOVOLJENIH_NAPAK = 10
 PRAVILNA_CRKA = '+' 
 PONOVLJENA_CRKA = 'o'
 NAPACNA_CRKA = '-'
 ZMAGA = 'W'
 PORAZ = 'X'
+ZACETEK = 'Z'
 
 class Igra:
     def __init__(self, geslo, crke = []):
@@ -52,10 +55,29 @@ class Igra:
                 return PORAZ
             return NAPACNA_CRKA
 
+class Vislice:
+    def __init__(self):
+        self.igre = {}
+
+    def prost_id_igre(self):
+        if not self.igre:
+            return 0
+        else:
+            return max(self.igre) + 1
+
+    def nova_igra(self):
+        nov_id = self.prost_id_igre()
+        self.igre[nov_id] = (nova_igra(), ZACETEK)
+        return self.igre[nov_id]
+
+    def ugibaj(self, id_igre, crka):
+        igra = self.igre[id_igre]
+        stanje = igra.ugibaj(crka)
+        self.igre[id_igre] = (igra, stanje)
+
+
 with open('besede.txt', encoding='utf-8') as f:
     bazen_besed = f.read().split()
-
-import random
 
 def nova_igra():
     beseda = random.choice(bazen_besed)
