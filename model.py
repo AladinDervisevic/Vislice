@@ -57,7 +57,7 @@ class Igra:
             return NAPACNA_CRKA
 
 class Vislice:
-    datoteka_s_stanjem = stanje.json
+    datoteka_s_stanjem = 'stanje.json'
 
     def __init__(self):
         self.igre = {}
@@ -79,7 +79,8 @@ class Vislice:
         self.igre[id_igre] = (igra, stanje)
 
     def nalozi_igre_iz_datoteke(self):
-        igre = json.load(self.datoteka_s_stanjem)
+        with open(self.datoteka_s_stanjem, encoding='utf-8') as f:
+            igre = json.load(f)
         for id_igre in igre:
             geslo = igre[id_igre]['geslo']
             crke = igre[id_igre]['crke']
@@ -93,7 +94,8 @@ class Vislice:
         for id_igre in self.igre:
             igra, stanje = self.igre[id_igre]
             igre[id_igre] = {'geslo': igra.geslo, 'crke': igra.crke, 'stanje': stanje}
-        json.dump(igre, self.datoteka_s_stanjem)
+        with open(self.datoteka_s_stanjem, 'w', encoding='utf-8') as f:
+            json.dump(igre, f)
 
 with open('besede.txt', encoding='utf-8') as f:
     bazen_besed = f.read().split()

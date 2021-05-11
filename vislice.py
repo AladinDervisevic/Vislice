@@ -1,4 +1,5 @@
-import bottle, model
+import bottle
+import model
 
 SECRET = 'SKRIVNOSTNA KODA'
 
