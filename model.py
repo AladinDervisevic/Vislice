@@ -9,9 +9,9 @@ PORAZ = 'X'
 ZACETEK = 'Z'
 
 class Igra:
-    def __init__(self, geslo, crke = []):
+    def __init__(self, geslo):
         self.geslo = geslo.upper()
-        self.crke = crke
+        self.crke = []
 
     def napacne_crke(self):
         return [i.upper() for i in self.crke if i.upper() not in self.geslo]
@@ -68,10 +68,10 @@ class Vislice:
     def nova_igra(self):
         nov_id = self.prost_id_igre()
         self.igre[nov_id] = (nova_igra(), ZACETEK)
-        return self.igre[nov_id]
+        return nov_id
 
     def ugibaj(self, id_igre, crka):
-        igra = self.igre[id_igre]
+        igra, stanje = self.igre[id_igre]
         stanje = igra.ugibaj(crka)
         self.igre[id_igre] = (igra, stanje)
 
