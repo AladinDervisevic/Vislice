@@ -1,4 +1,5 @@
 import random
+import json
 
 STEVILO_DOVOLJENIH_NAPAK = 10
 PRAVILNA_CRKA = '+' 
@@ -56,6 +57,8 @@ class Igra:
             return NAPACNA_CRKA
 
 class Vislice:
+    datoteka_s_stanjem = stanje.json
+
     def __init__(self):
         self.igre = {}
 
@@ -75,6 +78,22 @@ class Vislice:
         stanje = igra.ugibaj(crka)
         self.igre[id_igre] = (igra, stanje)
 
+    def nalozi_igre_iz_datoteke(self):
+        igre = json.load(self.datoteka_s_stanjem)
+        for id_igre in igre:
+            geslo = igre[id_igre]['geslo']
+            crke = igre[id_igre]['crke']
+            stanje = igre[id_igre]['stanje']
+            igra = Igra(geslo)
+            igra.crke = crke
+            self.igre[int(id_igre)] = (igra, stanje)
+
+    def zapisi_igre_v_datoteko(self):
+        igre = {}
+        for id_igre in self.igre:
+            igra, stanje = self.igre[id_igre]
+            igre[id_igre] = {'geslo': igra.geslo, 'crke': igra.crke, 'stanje': stanje}
+        json.dump(igre, self.datoteka_s_stanjem)
 
 with open('besede.txt', encoding='utf-8') as f:
     bazen_besed = f.read().split()
