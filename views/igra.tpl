@@ -3,7 +3,7 @@
 <h1>{{igra.pravilni_del_gesla()}}</h1>
 
 Nepravilne črke: {{igra.nepravilni_del_gesla()}} <br>
-Stopnja obešenosti: {{igra.stevilo_napak()}}
+<img src='/img/{{igra.stevilo_napak()}}.jpg' alt='stopnja obesenosti'></img>
 
 % if igra.zmaga():
 <h1>Čestitke, uganil/a si geslo: {{igra.geslo}}</h1>
