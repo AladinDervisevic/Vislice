@@ -1,4 +1,4 @@
-% rebase(base.tpl, naslov = 'Igra vislic')
+% rebase('base.tpl')
 
 <h1>{{igra.pravilni_del_gesla()}}</h1>
 

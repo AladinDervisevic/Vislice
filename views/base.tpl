@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <title>{{naslov or 'Vislice'}}</title>
+    <title>{{get('naslov', 'Vislice')}}</title>
     <body>
         {{!base}}
     </body
