@@ -3,6 +3,7 @@ import bottle, model
 SECRET = 'SKRIVNOSTNA KODA'
 
 vislice = model.Vislice()
+vislice.nalozi_igre_iz_datoteke()
 
 @bottle.get('/')
 def zacetna_stran():
@@ -11,6 +12,7 @@ def zacetna_stran():
 @bottle.post('/nova_igra/')
 def nova_igra():
     id = vislice.nova_igra()
+    vislice.zapisi_igre_v_datoteko()
     bottle.response.set_cookie('id_igre', id, path='/', secret=SECRET)
     return bottle.redirect('/igra/')
 
@@ -25,6 +27,7 @@ def ugibaj():
     id = bottle.request.get_cookie('id_igre', secret=SECRET)
     crka = bottle.request.forms.get('crka')
     vislice.ugibaj(id, crka)
+    vislice.zapisi_igre_v_datoteko()
     return bottle.redirect(f'/igra/')
 
 @bottle.get('/img/<picture>')
